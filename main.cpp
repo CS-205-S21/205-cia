@@ -2,48 +2,36 @@
 #include <vector>
 #include "tag.h"
 #include "pet.h"
+#include <iostream>
+#include "helper.h"
+#include <QDir>
 using namespace std;
-
 //Not sure where to put this, doesn't fit in main
-void addPet()
+
+int main()
 {
-    string petName;
-    cout << "Enter pet's name: ";
-    cin << petName << endln;
-    string species;
-    cout << "Enter pet's species: ";
-    cin << species << endln;
     bool done = false;
-    vector<Tag> tags;
+    Helper h("/home/browni/205-CIA/adoption.db");
     while (!done)
     {
-        string misc;
-        cout <<"Enter miscellaneous tags, or type 'end' to stop: ";
-        cin  << misc << endl;
-        if (misc.compare("end") == 0)
+        cout <<"Pets:" << endl;
+        h.showPets();
+        string in;
+        cout << "Type 'add' to add a pet, the name of a pet to search, or 'end' to end ";
+        cin >> in;
+        if (in.compare("end") == 0)
         {
             done = true;
         }
+        else if (in.compare("add") == 0)
+        {
+            h.addPet();
+            continue;
+        }
         else
         {
-            tags.push_back(misc);
+            h.search(in);
         }
     }
-    Pet p = new Pet(name, tags);
-    cout << "All done!" << endl;
-}
-int main()
-{
-    cout << "Hello World!" << endl;
-    vector<Tag> tags = new vector<Tag>;
-    Tag tag1 = new Tag("dog");
-    tags->push_back(tag1);
-    Tag* tag2 = new Tag("good with kids")
-    tags->push_back(tag2);
-    Tag* tag3 = new Tag("likes hikes");
-    tags->push_back(tag3);
-    Pet* Fido = new Pet("Fido",tags);
-    cout << "We have a pet named " << Fido->getName() << endl;
-    cout << "Here are his tags: " << Fido->getTags() << endl;
     return 0;
 }

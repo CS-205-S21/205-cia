@@ -1,6 +1,8 @@
 #ifndef PET_H
 #define PET_H
 #include <vector>
+#include <iostream>
+#include <tag.h>
 using namespace std;
 
 class Pet

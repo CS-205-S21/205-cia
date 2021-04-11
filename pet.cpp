@@ -10,16 +10,18 @@ Pet::Pet(string n, vector<Tag> tagList)
     name = n;
     tags = tagList; //a pointer sin???
 }
-Pet::getName()
+string Pet::getName()
 {
     return name;
 }
-Pet::getTags()
+vector<Tag> Pet::getTags()
 {
     return tags;
 }
-Pet::showPetProfile()
+
+void Pet::showPetProfile()
 {
+    /**
     //Makeshift. Later method will loop through all categories of tags without
     //us entering it manually
     cout << name << endl;
@@ -38,4 +40,5 @@ Pet::showPetProfile()
     }
     cout << "species: " << species;
     cout << "misc: " << misc;
+    */
 }
